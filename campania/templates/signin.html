@@ -1,0 +1,35 @@
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row h-100 justify-content-center align-items-center">        
+            <div class="col-md-4">
+                <h3 class="text-center">Iniciar Sesión</h3>
+
+                {% bootstrap_messages %}
+
+                <form action="{% url 'signin' %}" method="post" class="form" novalidate>
+                    {% csrf_token %}
+
+                    {% bootstrap_form signin_form %}
+
+                    {% bootstrap_button "Iniciar sesión" button_type="submit" size="sm" %}
+                    {% bootstrap_button "Borrar" button_type="reset" size="sm" button_class="btn-outline-secondary" %}
+                    <a href="{% url 'home' %}" class="btn btn-link">Ir a las campañas</a>
+                </form>                
+            </div>
+        </div>        
+    </div>
+</body>
+</html>
